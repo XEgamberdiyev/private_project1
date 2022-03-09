@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="padding: 20px">
+    <h4>${message}</h4><hr>
+
+    <h3>Please, fill the registration form</h3><br>
+
+    <form action="/register" method="post">
+
+<!--        <input type="text" class="form-control" placeholder="Enter Full name" name="fullName" required><br>-->
+        <div>
+            <label for="fullName">Full Name</label> <input type="text" th:field="*{uz.pdp.model}"
+                                                      id="fullName" placeholder="Full Name">
+            <ul>
+                <li th:each="err : ${#fields.errors('fullName')}" th:text="${uz.pdp.model}" class="error" />
+            </ul>
+        </div>
+
+<!--        <input type="email" class="form-control" placeholder="Enter Email" name="email" required><br>-->
+        <div>
+            <label for="fullName">Email</label> <input type="email" th:field="*{uz.pdp.model}" />
+            <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{uz.pdp.model}" />
+        </div>
+
+<!--        <input type="password" class="form-control" placeholder="Enter password" name="password" required><br>-->
+        <div>
+            <label for="fullName">Password</label> <input type="password" th:field="*{uz.pdp.model}" />
+            <p th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{uz.pdp.model}" />
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+
+</body>
+</html>
